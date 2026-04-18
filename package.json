@@ -1,14 +1,13 @@
 {
-  "name": "yance-mcp-server",
+  "name": "@xihe-lab/yance-mcp-server",
   "version": "1.0.0",
   "description": "YanceLint MCP Server — 让 AI 实时感知代码规约",
   "type": "module",
   "main": "dist/index.js",
   "license": "Apache-2.0",
   "author": {
-    "name": "Xihe Lab (羲和实验室)",
-    "email": "contact@xihe-lab.com",
-    "url": "https://www.xihe-lab.com"
+    "name": "xuzhao",
+    "email": "xuzhao@xihe-lab.com"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,11 @@
     "code-linting",
     "intellij",
     "claude",
-    "ai-assisted-coding"
+    "ai-assisted-coding",
+    "p3c",
+    "eslint",
+    "stylelint",
+    "checkstyle"
   ],
   "scripts": {
     "build": "tsc",
@@ -48,5 +51,9 @@
     "README.md",
     "LICENSE",
     "NOTICE"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
 }
