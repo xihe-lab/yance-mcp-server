@@ -1,5 +1,8 @@
 # YanceLint MCP Server
 
+[![npm](https://img.shields.io/npm/v/@xihe-lab/yance-mcp-server)](https://www.npmjs.com/package/@xihe-lab/yance-mcp-server)
+[![License](https://img.shields.io/npm/l/@xihe-lab/yance-mcp-server)](https://www.apache.org/licenses/LICENSE-2.0)
+
 让 AI（Claude Code）实时感知代码规约违规。
 
 ## 简介
@@ -9,17 +12,21 @@ YanceLint MCP Server 是 [YanceLint](https://github.com/xihe-lab/yance-idea) 的
 ## 安装
 
 ```bash
-npm install
-npm run build
-```
+# 方式 1：npx 直接运行（推荐，无需安装）
+npx @xihe-lab/yance-mcp-server
 
-或直接安装：
+# 方式 2：全局安装
+npm install -g @xihe-lab/yance-mcp-server
+yance-mcp-server
 
-```bash
-npm install yance-mcp-server
+# 方式 3：项目级安装
+npm install @xihe-lab/yance-mcp-server
+npx yance-mcp-server
 ```
 
 ## 注册到 Claude Code
+
+### 推荐：npx 方式（无需安装）
 
 在 `~/.claude.json` 中添加：
 
@@ -27,24 +34,35 @@ npm install yance-mcp-server
 {
   "mcpServers": {
     "yancelint": {
-      "command": "node",
-      "args": ["node_modules/yance-mcp-server/dist/index.js"],
-      "env": {
-        "YANCELINT_SERVER_URL": "http://localhost:63742"
-      }
+      "command": "npx",
+      "args": ["-y", "@xihe-lab/yance-mcp-server"]
     }
   }
 }
 ```
 
-或使用全局安装路径：
+`npx` 会自动从 npm 拉取最新版本运行，无需手动安装。
+
+### 全局安装方式
 
 ```json
 {
   "mcpServers": {
     "yancelint": {
-      "command": "node",
-      "args": ["/path/to/yance-mcp-server/dist/index.js"]
+      "command": "yance-mcp-server"
+    }
+  }
+}
+```
+
+### 项目级安装方式
+
+```json
+{
+  "mcpServers": {
+    "yancelint": {
+      "command": "npx",
+      "args": ["yance-mcp-server"]
     }
   }
 }
@@ -53,7 +71,7 @@ npm install yance-mcp-server
 ## 工具列表
 
 | 工具 | 描述 |
-|:---|:---|
+| :--- | :--- |
 | `get_file_violations` | 获取指定文件的规约违规列表（来自 P3C/ESLint/Stylelint/Checkstyle） |
 | `get_project_summary` | 获取项目级扫描摘要，包含各工具违规总数 |
 | `check_health` | 检查 YanceLint Server 运行状态 |
@@ -70,7 +88,7 @@ npm install yance-mcp-server
 
 在 Claude Code 中：
 
-```
+```text
 > 检查 src/pages/Home.tsx 有什么规约违规
 ```
 
