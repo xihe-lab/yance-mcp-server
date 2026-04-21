@@ -11,24 +11,19 @@ YanceLint MCP Server 是 [YanceLint](https://github.com/xihe-lab/yance-idea) 的
 
 ## 安装
 
+无需手动安装，Claude Code 通过 `npx` 自动拉取最新版本。只需在项目中配置 MCP Server 即可（见下方「注册到 Claude Code」）。
+
+如需手动运行：
+
 ```bash
-# 方式 1：npx 直接运行（推荐，无需安装）
 npx @xihe-lab/yance-mcp-server
-
-# 方式 2：全局安装
-npm install -g @xihe-lab/yance-mcp-server
-yance-mcp-server
-
-# 方式 3：项目级安装
-npm install @xihe-lab/yance-mcp-server
-npx yance-mcp-server
 ```
 
 ## 注册到 Claude Code
 
-### 推荐：npx 方式（无需安装）
+### 方式一：项目级配置（推荐）
 
-在 `~/.claude.json` 中添加：
+在项目根目录创建 `.mcp.json`，团队成员共享：
 
 ```json
 {
@@ -41,9 +36,28 @@ npx yance-mcp-server
 }
 ```
 
-`npx` 会自动从 npm 拉取最新版本运行，无需手动安装。
+### 方式二：全局配置
 
-### 全局安装方式
+在 `~/.claude/settings.json` 中添加，所有项目生效：
+
+```json
+{
+  "mcpServers": {
+    "yancelint": {
+      "command": "npx",
+      "args": ["-y", "@xihe-lab/yance-mcp-server"]
+    }
+  }
+}
+```
+
+### 方式三：全局安装后使用
+
+```bash
+npm install -g @xihe-lab/yance-mcp-server
+```
+
+配置中直接使用命令名：
 
 ```json
 {
@@ -55,18 +69,7 @@ npx yance-mcp-server
 }
 ```
 
-### 项目级安装方式
-
-```json
-{
-  "mcpServers": {
-    "yancelint": {
-      "command": "npx",
-      "args": ["yance-mcp-server"]
-    }
-  }
-}
-```
+> `npx -y` 会自动从 npm 拉取最新版本运行，无需手动安装。
 
 ## 工具列表
 
