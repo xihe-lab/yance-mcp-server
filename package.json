@@ -1,9 +1,12 @@
 {
   "name": "@xihe-lab/yance-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "YanceLint MCP Server — 让 AI 实时感知代码规约",
   "type": "module",
   "main": "dist/index.js",
+  "bin": {
+    "yance-mcp-server": "dist/index.js"
+  },
   "license": "Apache-2.0",
   "author": {
     "name": "xuzhao",
